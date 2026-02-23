@@ -1,0 +1,345 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 30px;
+    background: #111;
+    border-bottom: 1px solid #2a2a2a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.adminHeader{
+    text-align: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #de252e;
+}
+
+.search-bar {
+    width: 40%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background: #3b3b3b;
+    color: #aaa;
+}
+
+.signin-btn {
+    background: #de252e;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 220px);
+    gap: 20px;
+}
+
+.movie-card {
+    background: #1c1c1c;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.movie-card button {
+    background: #de252e;
+    border: none;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.theatre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    margin: 20px;
+    padding: 20px;
+
+}
+
+.theatre-card {
+    padding: 15px;
+    background: #1e1e2f;
+    border-radius: 8px;
+    color: white;
+}
+
+.theatre-card button {
+    background: #de252e;
+    border: none;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-box{
+    background-color: #292929;
+    border-radius: 10px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    margin: 250px auto;
+}
+
+.login-box input{
+    width: 50%;
+    border: none;
+    outline: none;
+}
+
+.login-box #error{
+    color: #ff4d4d;
+}
+
+.filters{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+#genreFilter, #languageFilter, .filters button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+ .filters button{
+    background: #de252e;
+    color: white;
+    cursor: pointer;
+ }
+
+.movie-details {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.movie-details img {
+    max-width: 220px;       
+    /* height: 320px; */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.movie-details h1 {
+    margin-top: 0;
+}
+
+.movie-details-container {
+    width: 100%;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#movie-details {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+
+.movie-poster img {
+    width: 400px;
+    height: 570px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.movie-info{
+
+    align-items: center;
+    padding: 10px;
+}
+.movie-info h1 {
+    margin-top: 0;
+}
+
+.movie-info .meta {
+    color: #aaa;
+    margin: 8px 0;
+}
+
+.movie-info .description {
+    margin-top: 15px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.section-title {
+    padding: 20px;
+    margin: 20px;
+}
+
+section{
+    padding: 20px;
+    margin: 20px;
+}
+
+
+.add-show select{
+    min-width: 100px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.add-movie, .theatres, .add-show{
+    padding: 25px;
+    background: #1c1c1c;
+    border-radius: 10px;
+}
+
+.add-show button{
+    margin-left: 5px;
+}
+
+input, select{
+    margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+.add-movie button, .add-theatre button, .login-box button, .theatres button, .add-show button{
+    padding: 8px 16px;
+    background: #de252e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.booking-container {
+    max-width: 600px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.booking-card {
+    
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.booking-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.booking-card input {
+    padding: 10px;
+    border-radius: 5px;
+    background: #3b3b3b;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.booking-card {
+    max-width: 500px;
+    background: #1c1c1c;
+    padding: 30px;
+    border-radius: 10px;
+
+}
+
+.booking-card h2 {
+    margin-bottom: 20px;
+    color: #de252e;
+}
+
+.booking-details {
+    background: #313131;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: left;
+    margin: 20px 0;
+    line-height: 1.8;
+    color: #cecece;
+}
+
+.price-box p {
+    margin: 0 0 40px;
+    color: #aaa;
+}
+
+
+.confirm-btn, .back-btn {
+    width: 100%;
+    padding: 12px;
+    background: #de252e;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.confirm-btn:hover , .back-btn:hover{
+    opacity: 0.9;
+}
+
+#show-info{
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+#show-info h1{
+    color: white;
+}

@@ -1,0 +1,7 @@
+.card {
+  border: 1px solid #2a2a2a;
+}
+
+canvas {
+  max-height: 300px;
+}

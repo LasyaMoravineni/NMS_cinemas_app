@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2 class="mb-4">My Bookings</h2>
+
+  <div *ngIf="bookings.length === 0">
+    No bookings yet.
+  </div>
+
+  <div class="card mb-3 border-dark"
+       *ngFor="let b of bookings">
+
+    <div class="card-body">
+      <h5>{{ b.movieTitle }}</h5>
+      <p>{{ b.theatreName }}</p>
+      <p>{{ b.showTime | date:'medium' }}</p>
+      <p>Seats: {{ b.seatsBooked }} ({{ b.seatNumbers?.join(', ') }})</p>
+      <p>Total: ₹{{ b.totalAmount }}</p>
+
+      <button
+        *ngIf="b.status === 'CONFIRMED'"
+        class="btn btn-outline-danger btn-sm mt-2"
+        (click)="cancelBooking(b.bookingId)">
+        Cancel Booking
+      </button>
+
+      <button
+        *ngIf="b.status === 'CANCELLED'"
+        class="btn btn-secondary btn-sm mt-2"
+        disabled>
+        Cancelled
+      </button>
+      
+    </div>
+
+
+  </div>
+</div>

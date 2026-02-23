@@ -1,0 +1,9 @@
+<app-spinner *ngIf="loader.loading$ | async"></app-spinner>
+
+<!-- Show Admin Navbar only for admin pages (except login) -->
+<app-admin-navbar *ngIf="isAdminRoute() && !isAdminLogin()"></app-admin-navbar>
+
+<!-- Show User Navbar for all non-admin pages -->
+<app-navbar *ngIf="!isAdminRoute()"></app-navbar>
+
+<router-outlet></router-outlet>

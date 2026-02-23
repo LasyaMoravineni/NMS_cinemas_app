@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NMS Cinemas</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="logo">🎬 NMS Cinemas</div>
+
+    <input 
+        type="text" 
+        class="search-bar" 
+        placeholder="Search for movies, events, theatres..."
+        
+    />
+
+    <button class="signin-btn" onclick="goToLogin()">Sign In</button>
+
+</header>
+
+<section class="filters">
+    <select id="genreFilter" onchange="applyFilters()">
+        <option value="">All Genres</option>
+        <option value="Action">Action</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Comedy">Comedy</option>
+    </select>
+
+    <select id="languageFilter" onchange="applyFilters()">
+        <option value="">All Languages</option>
+        <option value="English">English</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Telugu">Telugu</option>
+    </select>
+
+    <button id="upcomingBtn" onclick="loadUpcoming()">Upcoming Movies</button>
+</section>
+
+<section class="movies">
+
+    <div id="movie-list" class="movie-grid"></div>
+</section>
+
+<script src="user.js"></script>
+</body>
+</html>

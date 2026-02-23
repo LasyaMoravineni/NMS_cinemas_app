@@ -1,0 +1,46 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e50914;
+  cursor: pointer;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.search-wrapper {
+  width: 40%;
+}
+
+.search-input {
+  background: #2a2a2a;
+  border: none;
+  color: white;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  box-shadow: none;
+  background: #333;
+}
+
+.auth-section {
+  min-width: 150px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.username {
+  color: #fff;
+  font-weight: 500;
+}

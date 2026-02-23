@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin | NMS Cinemas</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<header class="adminHeader">
+    <h1>🎬 NMS Cinemas – Admin Dashboard</h1>
+</header>
+
+<!-- Add movies -->
+<section class="add-movie">
+    <h2>Add / Update Movies</h2>
+
+    <p id="movieError" class="error"></p>
+
+    <input id="movieId" type="hidden">
+
+    <input id="posterUrl" placeholder="Poster Image URL">
+    <input id="title" placeholder="Title">
+    <input id="genre" placeholder="Genre">
+    <input id="language" placeholder="Language">
+    <input id="duration" type="number" placeholder="Duration">
+
+    <button onclick="saveMovie()">Save</button>
+</section>
+
+
+<!-- Add theatres -->
+<section class="theatres">
+    <h2>Add / Update Theatres</h2>
+    <p id="theatreError" class="error"></p>
+
+    <input id="theatreId" type="hidden">
+
+    <input id="theatreName" placeholder="Theatre Name">
+    <input id="location" placeholder="Location">
+
+    <button onclick="saveTheatre()">Save</button>
+
+</section>
+
+
+
+<!-- Add shows -->
+<section class="add-show">
+    <h2>Add / Update Shows</h2>
+
+    <select id="showMovie"></select>
+    <select id="showTheatre"></select>
+
+    <input type="datetime-local" id="showTime">
+    <input type="number" id="showPrice" placeholder="Ticket Price">
+    <input type="number" id="showSeats" placeholder="Available Seats">
+
+    <div class="error" id="showError"></div>
+
+    <button onclick="saveShow()">Add Show</button>
+</section>
+
+
+<section class="theatres-list">
+    <h2>Theatres</h2>
+    <div id="theatre-list" class="theatre-grid"></div>
+
+</section>
+
+
+<section class="shows">
+    <h2>Shows</h2>
+    <div id="show-list" class="theatre-grid"></div>
+
+    <input type="hidden" id="showId">
+
+</section>
+
+
+<section class="movies">
+    <h2>Movies</h2>
+    <div id="movie-list" class="movie-grid"></div>
+</section>
+
+
+<script src="admin.js"></script>
+</body>
+</html>

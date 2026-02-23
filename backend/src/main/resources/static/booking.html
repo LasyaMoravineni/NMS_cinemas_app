@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="logo">🎬 NMS Cinemas</div>
+
+    <input 
+        type="text" 
+        class="search-bar" 
+        placeholder="Search for movies, events, theatres..."
+        
+    />
+
+    <button class="signin-btn">Sign In</button>
+</header>
+
+<div class="booking-container">
+
+    <!-- Show Details -->
+    <div class="booking-card">
+        <h2 id="show-info">Loading show details...</h2>
+    </div>
+
+    <!-- Seat Selection -->
+    <div class="booking-card seat-box">
+        <label for="seats">Select number of seats</label>
+        <input 
+            type="number" 
+            id="seats" 
+            min="1" 
+            max="10" 
+            value="1" 
+            onchange="updateTotal()"
+        />
+    </div>
+
+    <!-- Pricing -->
+    <div class="booking-card price-box">
+        <p class="price">
+            Price per seat: ₹<span id="price">0</span>
+        </p>
+        <h3>
+            Total: ₹<span id="total">0</span>
+        </h3>
+    </div>
+
+    <!-- Action -->
+    <div class="booking-card action-box">
+        <button class="confirm-btn" onclick="confirmBooking()">
+            Confirm Booking
+        </button>
+        <p id="error" class="error"></p>
+    </div>
+
+</div>
+
+<script src="booking.js"></script>
+</body>
+</html>

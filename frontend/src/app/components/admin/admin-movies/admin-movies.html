@@ -1,0 +1,139 @@
+<div class="container mt-4">
+
+  <h3 class="mb-4" style="color:white">Manage Movies</h3>
+
+  <!-- Add / Edit Form -->
+  <form #movieForm="ngForm"
+        (ngSubmit)="saveMovie()"
+        class="card bg-dark text-light p-4 mb-4 shadow-sm">
+
+    <h5 class="mb-3">
+      {{ editing ? 'Edit Movie' : 'Add Movie' }}
+    </h5>
+
+    <div class="row g-3" id="movieform">
+
+      <div class="col-md-6">
+        <input class="form-control"
+               placeholder="Poster URL"
+               [(ngModel)]="movie.posterUrl"
+               name="posterUrl"
+               required>
+      </div>
+
+      <div class="col-md-6">
+        <input class="form-control"
+               placeholder="Title"
+               [(ngModel)]="movie.title"
+               name="title"
+               required>
+      </div>
+
+      <div class="col-md-4">
+        <input class="form-control"
+               placeholder="Genre"
+               [(ngModel)]="movie.genre"
+               name="genre"
+               required>
+      </div>
+
+      <div class="col-md-4">
+        <input class="form-control"
+               placeholder="Language"
+               [(ngModel)]="movie.language"
+               name="language"
+               required>
+      </div>
+
+      <div class="col-md-4">
+        <input type="number"
+               class="form-control"
+               placeholder="Duration (mins)"
+               [(ngModel)]="movie.duration"
+               name="duration"
+               required
+               min="1">
+      </div>
+
+      <!-- Upcoming Toggle -->
+      <div class="col-md-12">
+        <div class="form-check form-switch mt-2">
+          <input class="form-check-input"
+                 type="checkbox"
+                 [(ngModel)]="movie.isUpcoming"
+                 name="isUpcoming">
+          <label class="form-check-label">
+            Upcoming
+          </label>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="col-md-12 mt-2">
+
+        <button type="submit"
+                class="btn btn-danger me-2"
+                [disabled]="movieForm.invalid">
+          {{ editing ? 'Update Movie' : 'Add Movie' }}
+        </button>
+
+        <button *ngIf="editing"
+                type="button"
+                class="btn btn-secondary"
+                (click)="cancelEdit()">
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
+  </form>
+
+  <!-- Movie Cards -->
+  <div class="row">
+
+    <div class="col-md-3 mb-4"
+         *ngFor="let m of movies; trackBy: trackByMovie">
+
+      <div class="card bg-dark text-light h-100 shadow-sm">
+
+        <img [src]="m.posterUrl || 'https://via.placeholder.com/300x450?text=No+Poster'"
+             class="card-img-top"
+             style="height: 350px; object-fit: cover;">
+
+        <div class="card-body">
+
+          <h5 class="card-title">{{ m.title }}</h5>
+
+          <p>
+            {{ m.genre }} | {{ m.language }}
+          </p>
+
+          <p>{{ m.duration }} mins</p>
+
+          <span *ngIf="m.isUpcoming"
+                class="badge bg-warning text-dark">
+            Upcoming
+          </span>
+
+          <div class="mt-3 d-flex justify-content-between">
+            <button class="btn btn-sm btn-outline-danger"
+                    (click)="editMovie(m)">
+              Edit
+            </button>
+
+            <button class="btn btn-sm btn-outline-danger"
+                    (click)="deleteMovie(m.movieId)">
+              Delete
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

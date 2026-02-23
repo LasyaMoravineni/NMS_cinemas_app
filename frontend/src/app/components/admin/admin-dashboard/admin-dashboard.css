@@ -1,0 +1,51 @@
+
+
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar{
+  color: white;
+  width: 300px;
+  background: #000000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  transition: 0.3s ease;
+}
+
+.admin-sidebar.collapsed {
+  width: 70px;
+  align-items: center;
+}
+
+/* Hide sidebar content when collapsed */
+.admin-sidebar.collapsed h4,
+.admin-sidebar.collapsed .linkBtn {
+  display: none;
+}
+
+.hamburger-btn{
+  width: fit-content;
+  background-color: transparent;
+  font-size: 30px;  
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.linkBtn{
+  background: #de252e;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 30px;
+  background: #1a1a1a;
+}

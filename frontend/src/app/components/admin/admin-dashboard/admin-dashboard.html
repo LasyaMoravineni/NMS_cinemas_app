@@ -1,0 +1,33 @@
+
+
+  <div class="admin-container">
+
+      <div class="admin-sidebar bg-dark px-4 shadow-sm" [class.collapsed]="collapsed">
+        <button class="hamburger-btn"
+                (click)="toggleSidebar()">
+          {{ collapsed ? '☰' : 'x' }}
+        </button>
+          <h4>Admin Panel</h4>
+          <button class="linkBtn" (click)="section='movies'">Movies</button>
+          <button class="linkBtn" (click)="section='theatres'">Theatres</button>
+          <button class="linkBtn" (click)="section='shows'">Shows</button>
+          <button class="linkBtn" (click)="section='analytics'">Analytics</button>
+        
+      </div>
+
+      <div class="admin-content">
+
+        <app-admin-movies *ngIf="section==='movies'"></app-admin-movies>
+
+        <app-admin-theatres *ngIf="section==='theatres'"></app-admin-theatres>
+
+        <app-admin-shows *ngIf="section==='shows'"></app-admin-shows>
+
+        <app-admin-analytics *ngIf="section==='analytics'"></app-admin-analytics>
+
+
+      </div>
+
+</div>
+
+

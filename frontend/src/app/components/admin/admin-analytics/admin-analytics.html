@@ -1,0 +1,94 @@
+<div class="container mt-4" *ngIf="analytics">
+
+  <h3 class="mb-4" style="color:white">Analytics Dashboard</h3>
+
+  <!-- KPI CARDS -->
+  <div class="row mb-4">
+
+    <div class="col-md-3">
+      <div class="card bg-dark text-light p-3 text-center">
+        <h6>Total Revenue</h6>
+        <h4>₹ {{ analytics.totalRevenue }}</h4>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-dark text-light p-3 text-center">
+        <h6>Total Bookings</h6>
+        <h4>{{ analytics.totalBookings }}</h4>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-dark text-light p-3 text-center">
+        <h6>Avg Ticket Value</h6>
+        <h4>₹ {{ analytics.averageTicketValue | number:'1.0-0' }}</h4>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-dark text-light p-3 text-center">
+        <h6>Occupancy Rate</h6>
+        <h4>{{ analytics.occupancyRate | number:'1.0-1' }} %</h4>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="card bg-dark text-light p-3 text-center">
+        <h6>Top Performing Theatre</h6>
+        <h5 class="mt-2">{{ analytics.topPerformingTheatre }}</h5>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Charts -->
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="card bg-dark p-3">
+        <h6 class="text-light mb-3">Revenue Trend</h6>
+        <div style="height:300px" class="mt-4">
+            <canvas #revenueCanvas></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card bg-dark p-3">
+        <h6 class="text-light mb-3">Movie Performance</h6>
+        <div style="height:300px" class="mt-4">
+            <canvas #movieCanvas></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+
+      <div class="col-md-12">
+        <div class="card bg-dark p-3">
+          <h6 class="text-light mb-3">Revenue per Movie</h6>
+          <div style="height:350px">
+            <canvas #revenueMovieCanvas></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card bg-dark p-3">
+        <h6 class="text-light mb-3">Theatre Occupancy (%)</h6>
+        <div style="height:300px">
+          <canvas #theatreCanvas></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</div>
