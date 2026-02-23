@@ -70,27 +70,6 @@ Deployed on AWS EC2 (Dockerized)
 
 ---
 
-## 📂 Project Structure
-
-
-movie-booking-application/
-│
-├── backend/ # Spring Boot Application
-│ ├── src/
-│ ├── pom.xml
-│ └── Dockerfile
-│
-├── frontend/ # Angular Application
-│ ├── src/
-│ ├── angular.json
-│ └── package.json
-│
-├── screenshots/
-└── README.md
-
-
----
-
 ## ⚙️ Setup Instructions
 
 ### 🔹 Backend Setup
