@@ -102,7 +102,8 @@ docker build -t movie-booking-app .
 docker run -p 8080:8080 movie-booking-app
 
 
-🔐 Role-Based Access
+
+## 🔐 Role-Based Access
 
 Admin credentials manage movie data
 
@@ -112,7 +113,7 @@ Backend enforces API-level access control
 
 
 
-**🧠 Key Learning Outcomes**
+## 🧠 Key Learning Outcomes
 
 Designed and implemented RESTful APIs
 
@@ -126,7 +127,7 @@ Worked with CI/CD workflows
 
 
 
-**🚀 Future Enhancements**
+## 🚀 Future Enhancements
 
 Payment gateway integration
 
