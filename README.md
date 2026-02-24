@@ -55,18 +55,19 @@ Deployed on AWS EC2 (Dockerized)
 
 ---
 
-## 📸 Application Screenshots
+## 📸 Sample Screenshots 
 
 ### 🏠 Home Page
-![Home Page](screenshots/home.png)
+<img width="3446" height="1828" alt="image" src="https://github.com/user-attachments/assets/aa74fc06-0a2d-4aed-b920-ba990e02c670" />
 
 ### 🎟 Booking Flow
-![Booking Page](screenshots/booking.png)
+<img width="3448" height="1820" alt="image" src="https://github.com/user-attachments/assets/d501c1b5-0c68-4e1c-a2b1-d0ff9ff25fa8" />
+
+### Booking Confirmation
+<img width="1716" height="905" alt="success" src="https://github.com/user-attachments/assets/d561bdf1-33f5-4120-b1da-5cf86b9f268e" />
 
 ### 🛠 Admin Dashboard
-![Admin Dashboard](screenshots/admin.png)
-
-> Add your screenshots inside a folder named `screenshots/` in the root directory.
+<img width="3442" height="1818" alt="image" src="https://github.com/user-attachments/assets/831a076a-0bcf-4873-8b69-99bcfe78c609" />
 
 ---
 
