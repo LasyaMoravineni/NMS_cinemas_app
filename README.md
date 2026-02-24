@@ -73,33 +73,33 @@ Deployed on AWS EC2 (Dockerized)
 
 ## ⚙️ Setup Instructions
 
-### 🔹 Backend Setup
-
-```bash
-cd backend
-mvn clean install
-mvn spring-boot:run
-
-Backend runs on:  http://localhost:8080
-
-Make sure MySQL is running and database credentials are configured properly in application.properties.
-
-**🔹 Frontend Setup**
-cd frontend
-npm install
-ng serve
-
-Frontend runs on:  http://localhost:4200
-
-
-**🌐 Deployment**
-
-The application can be deployed on AWS EC2 using Docker.
-
-Example Docker commands:
-
-docker build -t movie-booking-app .
-docker run -p 8080:8080 movie-booking-app
+  ### 🔹 Backend Setup
+  
+  ```bash
+  cd backend
+  mvn clean install
+  mvn spring-boot:run
+  
+  Backend runs on:  http://localhost:8080
+  
+  Make sure MySQL is running and database credentials are configured properly in application.properties.
+  
+  **🔹 Frontend Setup**
+  cd frontend
+  npm install
+  ng serve
+  
+  Frontend runs on:  http://localhost:4200
+  
+  
+  **🌐 Deployment**
+  
+  The application can be deployed on AWS EC2 using Docker.
+  
+  Example Docker commands:
+  
+  docker build -t movie-booking-app .
+  docker run -p 8080:8080 movie-booking-app
 
 
 
