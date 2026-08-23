@@ -37,5 +37,19 @@ pipeline {
             }
         }
 
+        stage('Build Backend Docker Image') {
+            steps {
+                sh '''
+                    cd backend
+
+                    echo "===== DOCKER VERSION ====="
+                    docker --version
+
+                    echo "===== BUILDING BACKEND IMAGE ====="
+                    docker build -t nms-cinemas-backend:latest .
+                '''
+            }
+        }
+
     }
 }
