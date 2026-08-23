@@ -23,11 +23,15 @@ pipeline {
                     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
                     export PATH=$JAVA_HOME/bin:$PATH
 
-                    echo "Java version:"
+                    export MAVEN_OPTS="-Xms128m -Xmx384m"
+
+                    echo "===== JAVA ====="
                     java -version
 
-                    echo "Building Spring Boot backend..."
+                    echo "===== MAVEN ====="
+                    ./mvnw --version
 
+                    echo "===== BUILDING BACKEND ====="
                     ./mvnw clean package -DskipTests
                 '''
             }
