@@ -1,31 +1,30 @@
 pipeline {
+
     agent any
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/LasyaMoravineni/moviebooking-backend.git'
-            }
-        }
-
-        stage('Build JAR') {
+        stage('Verify Checkout') {
             steps {
                 sh '''
-                export MAVEN_OPTS="-Xms256m -Xmx512m"
-                mvn clean package -DskipTests
+                    echo "===== NMS CINEMAS CI/CD ====="
+                    echo "Current directory:"
+                    pwd
+
+                    echo ""
+                    echo "Repository contents:"
+                    ls -la
+
+                    echo ""
+                    echo "Backend:"
+                    ls -la backend
+
+                    echo ""
+                    echo "Frontend:"
+                    ls -la frontend
                 '''
             }
         }
 
-        stage('Run Application') {
-            steps {
-                sh '''
-                pkill -f moviebooking || true
-                nohup java -jar target/moviebooking-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
-                '''
-            }
-        }
     }
 }
