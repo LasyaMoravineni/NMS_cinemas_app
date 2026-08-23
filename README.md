@@ -72,27 +72,30 @@ Deployed on AWS EC2 (Dockerized)
 ---
 
 ## ⚙️ Setup Instructions
+ 
+### 🔹 Backend Setup
 
-  ### 🔹 Backend Setup
-  
-  ```bash
-  cd backend
-  mvn clean install
-  mvn spring-boot:run
+  * cd backend
+  * mvn clean install
+  * mvn spring-boot:run
   
   Backend runs on:  http://localhost:8080
   
   Make sure MySQL is running and database credentials are configured properly in application.properties.
+ 
+
+### 🔹 Frontend Setup
+
+  * cd frontend
   
-  **🔹 Frontend Setup**
-  cd frontend
-  npm install
-  ng serve
+  * npm install
+  
+  * ng serve
   
   Frontend runs on:  http://localhost:4200
   
   
-  **🌐 Deployment**
+**🌐 Deployment**
   
   The application can be deployed on AWS EC2 using Docker.
   
