@@ -8,20 +8,27 @@ pipeline {
             steps {
                 sh '''
                     echo "===== NMS CINEMAS CI/CD ====="
-                    echo "Current directory:"
+                    echo "Repository:"
                     pwd
-
-                    echo ""
-                    echo "Repository contents:"
                     ls -la
+                '''
+            }
+        }
 
-                    echo ""
-                    echo "Backend:"
-                    ls -la backend
+        stage('Build Backend') {
+            steps {
+                sh '''
+                    cd backend
 
-                    echo ""
-                    echo "Frontend:"
-                    ls -la frontend
+                    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+                    export PATH=$JAVA_HOME/bin:$PATH
+
+                    echo "Java version:"
+                    java -version
+
+                    echo "Building Spring Boot backend..."
+
+                    ./mvnw clean package -DskipTests
                 '''
             }
         }
