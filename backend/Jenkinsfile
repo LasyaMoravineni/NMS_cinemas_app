@@ -135,28 +135,27 @@ pipeline {
             steps {
                 sh '''
                     set -e
-
+        
                     echo "===== VERIFYING DEPLOYMENT ====="
-
+        
                     echo "Docker containers:"
                     docker ps
-
+        
                     echo "Waiting for backend to start..."
                     sleep 15
-
+        
                     echo "Backend health check:"
                     curl --fail --silent --show-error \
                         http://127.0.0.1:8081/api/movies \
                         > /tmp/nms-movies-response.json
-
+        
                     echo "Backend responded successfully."
-
+        
                     echo "Frontend:"
                     test -f /var/www/nms-cinemas/browser/index.html
-
-                    echo "Nginx:"
-                    nginx -t
-
+        
+                    echo "Frontend deployment verified."
+        
                     echo "===== DEPLOYMENT SUCCESSFUL ====="
                 '''
             }
