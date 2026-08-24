@@ -8,3 +8,6 @@ backend/target/
 
 # Mac
 .DS_Store
+
+# AWS EC2 SSH private key
+*.pem
