@@ -118,8 +118,9 @@ pipeline {
                         echo "Starting new backend container..."
                         docker run -d \
                             --name nms-cinemas-backend \
+                            --restart unless-stopped \
                             --network nms-network \
-                            -p 8081:8080 \
+                            -p 127.0.0.1:8081:8080 \
                             -e SPRING_DATASOURCE_URL="jdbc:mysql://nms-mysql:3306/movie_booking_db" \
                             -e SPRING_DATASOURCE_USERNAME="movieuser" \
                             -e SPRING_DATASOURCE_PASSWORD="$DB_PASSWORD" \
