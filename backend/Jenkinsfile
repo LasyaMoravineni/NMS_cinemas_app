@@ -8,8 +8,9 @@ pipeline {
             steps {
                 sh '''
                     echo "===== NMS CINEMAS CI/CD ====="
-                    echo "Repository:"
+                    echo "Workspace:"
                     pwd
+                    echo "Repository contents:"
                     ls -la
                 '''
             }
@@ -22,7 +23,6 @@ pipeline {
 
                     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
                     export PATH=$JAVA_HOME/bin:$PATH
-
                     export MAVEN_OPTS="-Xms128m -Xmx384m"
 
                     echo "===== JAVA ====="
@@ -51,5 +51,115 @@ pipeline {
             }
         }
 
+        stage('Build Frontend') {
+            steps {
+                sh '''
+                    cd frontend
+
+                    echo "===== NODE ====="
+                    node --version
+
+                    echo "===== NPM ====="
+                    npm --version
+
+                    echo "===== INSTALLING FRONTEND DEPENDENCIES ====="
+                    npm ci
+
+                    echo "===== BUILDING ANGULAR APPLICATION ====="
+                    npm run build
+                '''
+            }
+        }
+
+        stage('Deploy Frontend') {
+            steps {
+                sh '''
+                    echo "===== DEPLOYING FRONTEND ====="
+
+                    DEPLOY_DIR="/var/www/nms-cinemas/browser"
+                    BUILD_DIR="$WORKSPACE/frontend/dist/moviebooking-frontend/browser"
+
+                    test -f "$BUILD_DIR/index.html"
+
+                    echo "Build directory:"
+                    echo "$BUILD_DIR"
+
+                    echo "Clearing previous frontend..."
+                    rm -rf "$DEPLOY_DIR"/*
+
+                    echo "Copying new frontend..."
+                    cp -a "$BUILD_DIR"/. "$DEPLOY_DIR"/
+
+                    echo "Frontend deployment complete."
+                    ls -lah "$DEPLOY_DIR"
+                '''
+            }
+        }
+
+        stage('Deploy Backend') {
+            steps {
+                withCredentials([
+                    string(
+                        credentialsId: 'nms-db-password',
+                        variable: 'DB_PASSWORD'
+                    )
+                ]) {
+                    sh '''
+                        set -e
+
+                        echo "===== DEPLOYING BACKEND ====="
+
+                        echo "Stopping existing backend container..."
+                        docker stop nms-cinemas-backend || true
+
+                        echo "Removing existing backend container..."
+                        docker rm nms-cinemas-backend || true
+
+                        echo "Starting new backend container..."
+                        docker run -d \
+                            --name nms-cinemas-backend \
+                            --network nms-network \
+                            -p 8081:8080 \
+                            -e SPRING_DATASOURCE_URL="jdbc:mysql://nms-mysql:3306/movie_booking_db" \
+                            -e SPRING_DATASOURCE_USERNAME="movieuser" \
+                            -e SPRING_DATASOURCE_PASSWORD="$DB_PASSWORD" \
+                            nms-cinemas-backend:latest
+
+                        echo "Backend container started."
+                    '''
+                }
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                    set -e
+
+                    echo "===== VERIFYING DEPLOYMENT ====="
+
+                    echo "Docker containers:"
+                    docker ps
+
+                    echo "Waiting for backend to start..."
+                    sleep 15
+
+                    echo "Backend health check:"
+                    curl --fail --silent --show-error \
+                        http://127.0.0.1:8081/api/movies \
+                        > /tmp/nms-movies-response.json
+
+                    echo "Backend responded successfully."
+
+                    echo "Frontend:"
+                    test -f /var/www/nms-cinemas/browser/index.html
+
+                    echo "Nginx:"
+                    nginx -t
+
+                    echo "===== DEPLOYMENT SUCCESSFUL ====="
+                '''
+            }
+        }
     }
 }
